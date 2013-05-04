@@ -15,20 +15,13 @@ Bundle 'altercation/vim-colors-solarized'
 Bundle 'scrooloose/nerdtree'
 Bundle 'kien/ctrlp.vim'
 Bundle 'Lokaltog/vim-powerline'
-"Bundle 'Valloric/YouCompleteMe'
+Bundle 'tpope/vim-unimpaired'
+Bundle 'scrooloose/syntastic'
 
 " Programming languages:
 Bundle 'derekwyatt/vim-scala'
 
-
 filetype plugin indent on   " required for vundle
-
-" OTHER STUFF I MIGHT NEED ONE DAY:
-"Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
-" vim-scripts repos
-"Bundle 'FuzzyFinder'
-" non github repos
-"Bundle 'git://git.wincent.com/command-t.git'
 
 """"""""""""""""""""""""""""""""""
 " Syntax and indent
@@ -36,6 +29,12 @@ filetype plugin indent on   " required for vundle
 syntax enable " Turn on syntax highligthing
 set background=dark
 colorscheme solarized
+"let g:solarized_termcolors=16
+if &diff
+  " incase i want different things for vimdiff
+  set background=dark
+endif
+
 set showmatch  "Show matching bracets when text indicator is over them
 
 " Switch on filetype detection and loads 
@@ -57,9 +56,14 @@ set expandtab
 set shiftwidth=2
 set softtabstop=2
 
+" For vim-sensible, keep all the undo files in the same place
+set undodir^=~/.vim/undo
+
 " NERDTree
 map <C-n> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+" Fix for funny characters
+let g:NERDTreeDirArrows=0
 
 " CtrlP
 let g:ctrlp_map = '<c-p>'
@@ -70,3 +74,6 @@ let g:ctrlp_working_path_mode = 'ra'
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+" uncommenting this will break the CtrlP hotkey...
+"source /apollo/env/envImprovement/var/vimrc
+
