@@ -17,6 +17,7 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'scrooloose/syntastic'
+Bundle 'tpope/vim-eunuch'
 
 " Programming languages:
 Bundle 'derekwyatt/vim-scala'
@@ -69,11 +70,9 @@ let g:NERDTreeDirArrows=0
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 
-let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_working_path_mode = 'a'
 
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
-" uncommenting this will break the CtrlP hotkey...
-"source /apollo/env/envImprovement/var/vimrc
 
