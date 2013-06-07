@@ -18,9 +18,12 @@ Bundle 'Lokaltog/vim-powerline'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'scrooloose/syntastic'
 Bundle 'tpope/vim-eunuch'
+Bundle 'godlygeek/tabular'
+Bundle 'mileszs/ack.vim'
 
 " Programming languages:
 Bundle 'derekwyatt/vim-scala'
+Bundle 'vim-ruby/vim-ruby'
 
 filetype plugin indent on   " required for vundle
 
@@ -64,15 +67,15 @@ set undodir^=~/.vim/undo
 map <C-n> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 " Fix for funny characters
-let g:NERDTreeDirArrows=0
+"let g:NERDTreeDirArrows=0
 
 " CtrlP
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
-
 let g:ctrlp_working_path_mode = 'a'
-
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
-
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+
+" Custom command for :Ack
+let g:ackprg="/home/zakv/dev/software/ack-2.04-single-file -H --nocolor --nogroup --column"
 
