@@ -16,14 +16,18 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'kien/ctrlp.vim'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'tpope/vim-unimpaired'
-Bundle 'scrooloose/syntastic'
 Bundle 'tpope/vim-eunuch'
 Bundle 'godlygeek/tabular'
-Bundle 'mileszs/ack.vim'
 
-" Programming languages:
+" Coding
+Bundle 'mileszs/ack.vim'
+Bundle 'majutsushi/tagbar'
+Bundle 'scrooloose/syntastic'
+
+" Programming languages
 Bundle 'derekwyatt/vim-scala'
 Bundle 'vim-ruby/vim-ruby'
+Bundle 'jtratner/vim-flavored-markdown'
 
 filetype plugin indent on   " required for vundle
 
@@ -72,10 +76,20 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 " CtrlP
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
+
 let g:ctrlp_working_path_mode = 'a'
+
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 
 " Custom command for :Ack
 let g:ackprg="/home/zakv/dev/software/ack-2.04-single-file -H --nocolor --nogroup --column"
+
+" Tagbar
+nmap <F8> :TagbarToggle<CR>
+
+" Autocomplete:
+imap <C-Space> <C-x><C-o>
+imap <C-@> <C-Space>
 
