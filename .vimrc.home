@@ -18,12 +18,19 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'kien/ctrlp.vim'
 " Bundle 'Lokaltog/vim-powerline'
 Bundle 'tpope/vim-unimpaired'
-Bundle 'scrooloose/syntastic'
 Bundle 'tpope/vim-eunuch'
 Bundle 'ervandew/supertab'
+Bundle 'godlygeek/tabular'
 
-" Programming languages:
+" Coding
+Bundle 'mileszs/ack.vim'
+Bundle 'majutsushi/tagbar'
+Bundle 'scrooloose/syntastic'
+
+" Programming languages
 Bundle 'derekwyatt/vim-scala'
+Bundle 'vim-ruby/vim-ruby'
+Bundle 'tpope/vim-markdown'
 
 filetype off
 filetype plugin indent on   " required for vundle
@@ -71,4 +78,7 @@ let g:syntastic_mode_map = { 'mode': 'active',
 let g:syntastic_ruby_checkers = ['rubocop']
 let g:syntastic_scala_checkers = ['scalac']
 let g:syntastic_java_checkers = ['javac']
+
+" Tagbar
+nmap <F8> :TagbarToggle<CR>
 

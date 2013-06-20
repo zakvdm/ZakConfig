@@ -18,12 +18,19 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'kien/ctrlp.vim'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'tpope/vim-unimpaired'
-Bundle 'scrooloose/syntastic'
 Bundle 'tpope/vim-eunuch'
 Bundle 'ervandew/supertab'
+Bundle 'godlygeek/tabular'
 
-" Programming languages:
+" Coding
+Bundle 'mileszs/ack.vim'
+Bundle 'majutsushi/tagbar'
+Bundle 'scrooloose/syntastic'
+
+" Programming languages
 Bundle 'derekwyatt/vim-scala'
+Bundle 'vim-ruby/vim-ruby'
+Bundle 'tpope/vim-markdown'
 
 filetype off
 filetype plugin indent on   " required for vundle
@@ -49,7 +56,7 @@ set undodir^=~/.vim/undo
 map <C-n> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 " Fix for funny characters
-let g:NERDTreeDirArrows=0
+"let g:NERDTreeDirArrows=0
 
 " CtrlP
 let g:ctrlp_map = '<c-p>'
@@ -68,4 +75,10 @@ let g:syntastic_mode_map = { 'mode': 'active',
 let g:syntastic_ruby_checkers = ['rubocop']
 let g:syntastic_scala_checkers = ['scalac']
 let g:syntastic_java_checkers = ['javac']
+
+" Custom command for :Ack
+let g:ackprg="/home/zakv/dev/software/ack-2.04-single-file -H --nocolor --nogroup --column"
+
+" Tagbar
+nmap <F8> :TagbarToggle<CR>
 
