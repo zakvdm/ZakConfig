@@ -16,14 +16,13 @@ Bundle 'tpope/vim-sensible'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'scrooloose/nerdtree'
 Bundle 'kien/ctrlp.vim'
-Bundle 'Lokaltog/vim-powerline'
+" Bundle 'Lokaltog/vim-powerline'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'tpope/vim-eunuch'
 Bundle 'ervandew/supertab'
 Bundle 'godlygeek/tabular'
 
 " Coding
-Bundle 'tpope/vim-fugitive'
 Bundle 'mileszs/ack.vim'
 Bundle 'majutsushi/tagbar'
 Bundle 'scrooloose/syntastic'
@@ -53,11 +52,14 @@ set showmatch  "Show matching bracets when text indicator is over them
 " For vim-sensible, keep all the undo files in the same place
 set undodir^=~/.vim/undo
 
+" Powerline
+set rtp+=/home/zak/.local/lib/python2.7/site-packages/powerline/bindings/vim
+
 " NERDTree
 map <C-n> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 " Fix for funny characters
-"let g:NERDTreeDirArrows=0
+let g:NERDTreeDirArrows=0
 
 " CtrlP
 let g:ctrlp_map = '<c-p>'
@@ -76,9 +78,6 @@ let g:syntastic_mode_map = { 'mode': 'active',
 let g:syntastic_ruby_checkers = ['rubocop']
 let g:syntastic_scala_checkers = ['scalac']
 let g:syntastic_java_checkers = ['javac']
-
-" Custom command for :Ack
-let g:ackprg="/home/zakv/dev/software/ack-2.04-single-file -H --nocolor --nogroup --column"
 
 " Tagbar
 nmap <F8> :TagbarToggle<CR>
