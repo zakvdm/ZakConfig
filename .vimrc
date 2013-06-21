@@ -20,6 +20,7 @@ Bundle 'tpope/vim-eunuch'
 Bundle 'godlygeek/tabular'
 
 " Coding
+Bundle 'tpope/vim-fugitive'
 Bundle 'mileszs/ack.vim'
 Bundle 'majutsushi/tagbar'
 Bundle 'scrooloose/syntastic'
