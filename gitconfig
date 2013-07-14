@@ -1,0 +1,14 @@
+[user]
+	email = zakvdm@gmail.com
+	name = Zak van der Merwe
+[core]
+	editor = vim
+	whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
+[color]
+	ui = auto
+[alias]
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+[merge]
+	tool = vimdiff
+[push]
+	default = simple
