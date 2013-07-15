@@ -16,7 +16,7 @@ Bundle 'tpope/vim-sensible'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'scrooloose/nerdtree'
 Bundle 'kien/ctrlp.vim'
-Bundle 'Lokaltog/vim-powerline'
+Bundle 'bling/vim-airline'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'tpope/vim-eunuch'
 Bundle 'ervandew/supertab'
@@ -63,6 +63,10 @@ set softtabstop=2
 
 " For vim-sensible, keep all the undo files in the same place
 set undodir^=~/.vim/undo
+
+" For airline
+let g:airline_theme='solarized2'
+let g:airline_powerline_fonts=1
 
 " NERDTree
 map <C-n> :NERDTreeToggle<CR>
