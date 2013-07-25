@@ -65,8 +65,9 @@ set softtabstop=2
 set undodir^=~/.vim/undo
 
 " For airline
-let g:airline_theme='solarized2'
-let g:airline_powerline_fonts=1
+let g:airline_theme='ubaryd'
+let g:airline_left_sep=''
+let g:airline_right_sep=''
 
 " NERDTree
 map <C-n> :NERDTreeToggle<CR>
