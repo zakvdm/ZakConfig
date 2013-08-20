@@ -35,6 +35,7 @@ Bundle 'derekwyatt/vim-scala'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'tpope/vim-markdown'
 Bundle 'kchmck/vim-coffee-script'
+Bundle 'groenewege/vim-less'
 
 filetype off
 filetype plugin indent on   " required for vundle
@@ -58,15 +59,16 @@ set expandtab
 set tabstop=2
 set shiftwidth=2
 
+set undodir^=~/.vim/undo " For vim-sensible, keep all the undo files in the same place
+set backupdir=~/.vim/backup/
+set directory=~/.vim/backup/
+
 """""""""""
 " Plugins "
 """""""""""
 
-" For vim-sensible, keep all the undo files in the same place
-set undodir^=~/.vim/undo
-
 " For airline
-let g:airline_theme='solarized2'
+let g:airline_theme='luna'
 let g:airline_powerline_fonts=1
 
 " NERDTree
