@@ -61,9 +61,9 @@ bindkey '^S' history-incremental-search-forward
 bindkey '^P' history-search-backward
 bindkey '^N' history-search-forward
 
+PATH=$HOME/local/bin:$PATH
 PATH=$PATH:$HOME/tools/jdk1.7.0_21/bin
-
 PATH=$PATH:$HOME/tools/scala-2.10.1/bin
-
 PATH=$PATH:$HOME/tools/sbt/bin
+
 
