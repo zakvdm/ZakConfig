@@ -1,41 +1,50 @@
 set nocompatible "Not vi compativle (Vim is king)
 
-""""""""""""""""""""""""""""""""""
-" Vundle
-""""""""""""""""""""""""""""""""""
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+"""""""""""""
+" NeoBundle "
+"""""""""""""
+if has('vim_starting')
+  set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
 
-" let Vundle manage Vundle required! 
-Bundle 'gmarik/vundle'
+call neobundle#rc(expand('~/.vim/bundle/'))
+
+" Let NeoBundle manage NeoBundle
+NeoBundleFetch 'Shougo/neobundle.vim'
+"
+" Recommended to install
+" After install, turn shell ~/.vim/bundle/vimproc, (n,g)make -f your_machines_makefile
+NeoBundle 'Shougo/vimproc'
 
 " To start with:
-Bundle 'tpope/vim-sensible'
+NeoBundle 'tpope/vim-sensible'
 
 " Github repos
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'scrooloose/nerdtree'
-Bundle 'kien/ctrlp.vim'
-Bundle 'bling/vim-airline'
-Bundle 'tpope/vim-unimpaired'
-Bundle 'tpope/vim-eunuch'
-Bundle 'ervandew/supertab'
-Bundle 'godlygeek/tabular'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'kien/ctrlp.vim'
+NeoBundle 'bling/vim-airline'
+NeoBundle 'tpope/vim-unimpaired'
+NeoBundle 'tpope/vim-eunuch'
+NeoBundle 'ervandew/supertab'
+NeoBundle 'godlygeek/tabular'
 
 " Coding
-Bundle 'tpope/vim-fugitive'
-Bundle 'mileszs/ack.vim'
-Bundle 'majutsushi/tagbar'
-Bundle 'scrooloose/syntastic'
-Bundle 'vim-scripts/argtextobj.vim'
-Bundle 'tpope/vim-surround'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'mileszs/ack.vim'
+NeoBundle 'majutsushi/tagbar'
+"NeoBundle 'scrooloose/syntastic'
+NeoBundle 'vim-scripts/argtextobj.vim'
+NeoBundle 'tpope/vim-surround'
 
 " Programming languages
-Bundle 'derekwyatt/vim-scala'
-Bundle 'vim-ruby/vim-ruby'
-Bundle 'tpope/vim-markdown'
+NeoBundle 'derekwyatt/vim-scala'
+NeoBundle 'vim-ruby/vim-ruby'
+NeoBundle 'tpope/vim-markdown'
+NeoBundle 'klen/python-mode'
 
-filetype off
+"filetype off
 filetype plugin indent on   " required for vundle
 
 """""""""""""""""""""
@@ -65,7 +74,7 @@ set softtabstop=2
 set undodir^=~/.vim/undo
 
 " For airline
-let g:airline_theme='ubaryd'
+let g:airline_theme='luna'
 let g:airline_left_sep=''
 let g:airline_right_sep=''
 
@@ -74,6 +83,8 @@ map <C-n> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 " Fix for funny characters
 "let g:NERDTreeDirArrows=0
+" Open automatically if no files specified:
+autocmd vimenter * if !argc() | NERDTree | endif
 
 " CtrlP
 let g:ctrlp_map = '<c-p>'
@@ -87,8 +98,8 @@ let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 
 " Syntastic
 let g:syntastic_mode_map = { 'mode': 'active',
-      \ 'active_filetypes': ['python', 'ruby'],
-            \ 'passive_filetypes': ['scala', 'java'] }
+      \ 'active_filetypes': ['ruby'],
+            \ 'passive_filetypes': ['scala', 'java', 'python'] }
 let g:syntastic_ruby_checkers = ['rubocop']
 let g:syntastic_scala_checkers = ['scalac']
 let g:syntastic_java_checkers = ['checkstyle']
