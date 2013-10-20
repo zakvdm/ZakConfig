@@ -42,7 +42,9 @@ NeoBundle 'tpope/vim-surround'
 NeoBundle 'derekwyatt/vim-scala'
 NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'tpope/vim-markdown'
+NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'klen/python-mode'
+NeoBundle 'groenewege/vim-less'
 
 "filetype off
 filetype plugin indent on   " required for vundle
@@ -61,17 +63,18 @@ endif
 
 set showmatch  "Show matching bracets when text indicator is over them
 
+" tabbing:
 set expandtab
 set shiftwidth=2
 set softtabstop=2
 
+set undodir^=~/.vim/undo " For vim-sensible, keep all the undo files in the same place
+set backupdir=~/.vim/backup/
+set directory=~/.vim/backup/
 
 """""""""""
 " Plugins "
 """""""""""
-
-" For vim-sensible, keep all the undo files in the same place
-set undodir^=~/.vim/undo
 
 " For airline
 let g:airline_theme='luna'
