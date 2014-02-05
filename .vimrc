@@ -47,6 +47,9 @@ NeoBundle 'klen/python-mode'
 "filetype off
 filetype plugin indent on   " required for vundle
 
+" Disable ex mode
+map Q <Nop>
+
 """""""""""""""""""""
 " Syntax and indent "
 """""""""""""""""""""
