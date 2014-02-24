@@ -34,7 +34,7 @@ NeoBundle 'godlygeek/tabular'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'mileszs/ack.vim'
 NeoBundle 'majutsushi/tagbar'
-"NeoBundle 'scrooloose/syntastic'
+NeoBundle 'scrooloose/syntastic'
 NeoBundle 'vim-scripts/argtextobj.vim'
 NeoBundle 'tpope/vim-surround'
 
@@ -45,6 +45,9 @@ NeoBundle 'tpope/vim-markdown'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'klen/python-mode'
 NeoBundle 'groenewege/vim-less'
+NeoBundle 'tpope/vim-rails'
+NeoBundle 'bitc/vim-hdevtools'
+NeoBundle 'vim-scripts/wikipedia.vim'
 
 "filetype off
 filetype plugin indent on   " required for vundle
@@ -104,16 +107,24 @@ let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 
 " Syntastic
 let g:syntastic_mode_map = { 'mode': 'active',
-      \ 'active_filetypes': ['ruby'],
-            \ 'passive_filetypes': ['scala', 'java', 'python'] }
+      \ 'active_filetypes': ['ruby', 'haskell'],
+      \ 'passive_filetypes': ['scala', 'java', 'python'] }
 let g:syntastic_ruby_checkers = ['rubocop']
 let g:syntastic_scala_checkers = ['scalac']
 let g:syntastic_java_checkers = ['checkstyle']
 let g:syntastic_java_checkstyle_classpath = '/home/zakv/dev/software/checkstyle/checkstyle-5.6-all.jar'
 let g:syntastic_java_checkstyle_conf_file = '/home/zakv/dev/software/checkstyle/sun_checks.xml'
 
+" Haskell: hdevtools (cabal install hdevtools)
+au FileType haskell nnoremap <buffer> <F1> :HdevtoolsType<CR>
+au FileType haskell nnoremap <buffer> <silent> <F2> :HdevtoolsClear<CR>
+
+" Make sure firefox is on your path
+let g:haddock_browser="firefox"
+
 " Custom command for :Ack
-let g:ackprg="/home/zakv/dev/software/ack-2.04-single-file -H --nocolor --nogroup --column"
+" Make sure ack is on your path
+" let g:ackprg="/home/zakv/dev/software/ack-2.04-single-file -H --nocolor --nogroup --column"
 
 " Tagbar
 nmap <F8> :TagbarToggle<CR>
