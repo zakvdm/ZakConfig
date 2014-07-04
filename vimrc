@@ -125,6 +125,7 @@ let g:haddock_browser="firefox"
 " Custom command for :Ack
 " Make sure ack is on your path
 " let g:ackprg="/home/zakv/dev/software/ack-2.04-single-file -H --nocolor --nogroup --column"
+let g:ackprg="~/bin/ack -H --nocolor --nogroup --column"
 
 " Tagbar
 nmap <F8> :TagbarToggle<CR>
