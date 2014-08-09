@@ -111,9 +111,6 @@ let g:syntastic_mode_map = { 'mode': 'active',
       \ 'passive_filetypes': ['scala', 'java', 'python'] }
 let g:syntastic_ruby_checkers = ['rubocop']
 let g:syntastic_scala_checkers = ['scalac']
-let g:syntastic_java_checkers = ['checkstyle']
-let g:syntastic_java_checkstyle_classpath = '/home/zakv/dev/software/checkstyle/checkstyle-5.6-all.jar'
-let g:syntastic_java_checkstyle_conf_file = '/home/zakv/dev/software/checkstyle/sun_checks.xml'
 
 " Haskell: hdevtools (cabal install hdevtools)
 au FileType haskell nnoremap <buffer> <F1> :HdevtoolsType<CR>
@@ -124,7 +121,6 @@ let g:haddock_browser="firefox"
 
 " Custom command for :Ack
 " Make sure ack is on your path
-" let g:ackprg="/home/zakv/dev/software/ack-2.04-single-file -H --nocolor --nogroup --column"
 let g:ackprg="~/bin/ack -H --nocolor --nogroup --column"
 
 " Tagbar
