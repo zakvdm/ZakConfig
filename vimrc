@@ -75,6 +75,9 @@ set expandtab
 set shiftwidth=2
 set softtabstop=2
 
+" folding:
+set nofoldenable            " don't fold when opening new buffers
+
 set undodir^=~/.vim/undo " For vim-sensible, keep all the undo files in the same place
 set backupdir=~/.vim/backup/
 set directory=~/.vim/backup/
@@ -94,7 +97,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 " Fix for funny characters
 "let g:NERDTreeDirArrows=0
 " Open automatically if no files specified:
-autocmd vimenter * if !argc() | NERDTree | endif
+"autocmd vimenter * if !argc() | NERDTree | endif
 
 " CtrlP
 let g:ctrlp_map = '<c-p>'
