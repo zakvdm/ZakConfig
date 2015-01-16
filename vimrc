@@ -56,6 +56,8 @@ filetype plugin indent on   " required for vundle
 " Disable ex mode
 map Q <Nop>
 
+set fileformats=unix " Only support unix-style files. Show carriage-return as ^M for non-unix style line endings
+
 """""""""""""""""""""
 " Syntax and indent "
 """""""""""""""""""""
