@@ -1,27 +1,30 @@
-set nocompatible "Not vi compativle (Vim is king)
-
-"""""""""""""
-" NeoBundle "
-"""""""""""""
+"NeoBundle Scripts-----------------------------
 if has('vim_starting')
-  set runtimepath+=~/.vim/bundle/neobundle.vim/
+  if &compatible
+    set nocompatible               " Be iMproved
+  endif
+
+  " Required:
+  set runtimepath+=/Users/zakv/.vim/bundle/neobundle.vim/
 endif
 
-call neobundle#rc(expand('~/.vim/bundle/'))
+" Required:
+call neobundle#begin(expand('/Users/zakv/.vim/bundle'))
 
 " Let NeoBundle manage NeoBundle
+" Required:
 NeoBundleFetch 'Shougo/neobundle.vim'
-"
-" Recommended to install
-" After install, turn shell ~/.vim/bundle/vimproc, (n,g)make -f your_machines_makefile
-NeoBundle 'Shougo/vimproc'
+
+" Add or remove your Bundles here:
+NeoBundle 'Shougo/neosnippet.vim'
+NeoBundle 'Shougo/neosnippet-snippets'
+NeoBundle 'flazz/vim-colorschemes'
 
 " To start with:
 NeoBundle 'tpope/vim-sensible'
 
 " Github repos
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'altercation/vim-colors-solarized'
+"NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'bling/vim-airline'
@@ -50,8 +53,20 @@ NeoBundle 'bitc/vim-hdevtools'
 NeoBundle 'vim-scripts/wikipedia.vim'
 NeoBundle 'dag/vim2hs'
 
-"filetype off
-filetype plugin indent on   " required for vundle
+" You can specify revision/branch/tag.
+NeoBundle 'Shougo/vimshell', { 'rev' : '3787e5' }
+
+" Required:
+call neobundle#end()
+
+" Required:
+filetype plugin indent on
+
+" If there are uninstalled bundles found on startup,
+" this will conveniently prompt you to install them.
+NeoBundleCheck
+"End NeoBundle Scripts-------------------------
+
 
 " Disable ex mode
 map Q <Nop>
@@ -63,7 +78,8 @@ set fileformats=unix " Only support unix-style files. Show carriage-return as ^M
 """""""""""""""""""""
 syntax enable " Turn on syntax highligthing
 set background=dark
-colorscheme solarized
+"colorscheme solarized
+colorscheme railscasts
 "let g:solarized_termcolors=16
 if &diff
   " incase i want different things for vimdiff
