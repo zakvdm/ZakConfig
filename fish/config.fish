@@ -17,6 +17,8 @@ set fish_plugins git brew
 . $fish_path/oh-my-fish.fish
 
 
+alias vim nvim
+alias vi nvim
 
 # Brazil
 alias bb brazil-build
