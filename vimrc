@@ -15,13 +15,25 @@ call neobundle#begin(expand('/Users/zakv/.vim/bundle'))
 " Required:
 NeoBundleFetch 'Shougo/neobundle.vim'
 
-" Add or remove your Bundles here:
-NeoBundle 'Shougo/neosnippet.vim'
-NeoBundle 'Shougo/neosnippet-snippets'
-NeoBundle 'flazz/vim-colorschemes'
-
 " To start with:
 NeoBundle 'tpope/vim-sensible'
+
+NeoBundle 'Shougo/vimproc.vim', {
+      \ 'build' : {
+      \     'windows' : 'tools\\update-dll-mingw',
+      \     'cygwin' : 'make -f make_cygwin.mak',
+      \     'mac' : 'make -f make_mac.mak',
+      \     'unix' : 'make -f make_unix.mak',
+      \    },
+      \ }
+
+"" Snippets
+NeoBundle 'SirVer/ultisnips'
+NeoBundle 'honza/vim-snippets'
+
+"" Color
+NeoBundle 'flazz/vim-colorschemes'
+NeoBundle 'tomasr/molokai'
 
 " Github repos
 "NeoBundle 'altercation/vim-colors-solarized'
@@ -30,6 +42,7 @@ NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'tpope/vim-unimpaired'
 NeoBundle 'tpope/vim-eunuch'
+NeoBundle 'tpope/vim-commentary'
 NeoBundle 'ervandew/supertab'
 NeoBundle 'godlygeek/tabular'
 
@@ -53,9 +66,6 @@ NeoBundle 'bitc/vim-hdevtools'
 NeoBundle 'vim-scripts/wikipedia.vim'
 NeoBundle 'dag/vim2hs'
 
-" You can specify revision/branch/tag.
-NeoBundle 'Shougo/vimshell', { 'rev' : '3787e5' }
-
 " Required:
 call neobundle#end()
 
@@ -67,19 +77,55 @@ filetype plugin indent on
 NeoBundleCheck
 "End NeoBundle Scripts-------------------------
 
-
 " Disable ex mode
 map Q <Nop>
 
+"" Encoding
+set encoding=utf-8
+set fileencoding=utf-8
+set fileencodings=utf-8
+
+"" Fix backspace indent
+set backspace=indent,eol,start
+
+"" Map leader to ,
+let mapleader=','
+
+"" Enable hidden buffers
+set hidden
+
 set fileformats=unix " Only support unix-style files. Show carriage-return as ^M for non-unix style line endings
+
+"" Searching
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+
+"" Encoding
+set bomb
+set ttyfast
+set binary
+
+"" Directories for swp files
+set nobackup
+set noswapfile
+
+set showcmd
+set shell=/bin/sh
 
 """""""""""""""""""""
 " Syntax and indent "
 """""""""""""""""""""
-syntax enable " Turn on syntax highligthing
+syntax on
+set ruler
+set number
+
+let no_buffers_menu=1
+highlight BadWhitespace ctermbg=red guibg=red
+colorscheme molokai
 set background=dark
-"colorscheme solarized
-colorscheme railscasts
+
 "let g:solarized_termcolors=16
 if &diff
   " incase i want different things for vimdiff
