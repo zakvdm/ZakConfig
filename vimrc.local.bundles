@@ -1,0 +1,18 @@
+" To start with:
+NeoBundle 'tpope/vim-sensible'
+NeoBundle 'flazz/vim-colorschemes'
+NeoBundle 'tpope/vim-unimpaired'
+NeoBundle 'tpope/vim-eunuch'
+
+" Coding
+NeoBundle 'mileszs/ack.vim'
+NeoBundle 'Shougo/neocomplcache.vim'
+NeoBundle 'scrooloose/syntastic'
+
+" Programming languages
+NeoBundle 'tpope/vim-markdown'
+NeoBundle 'kchmck/vim-coffee-script'
+NeoBundle 'groenewege/vim-less'
+NeoBundle 'vim-scripts/wikipedia.vim'
+NeoBundle 'bitc/vim-hdevtools'
+

@@ -1,0 +1,85 @@
+" Disable ex mode
+map Q <Nop>
+
+set fileformats=unix " Only support unix-style files. Show carriage-return as ^M for non-unix style line endings
+
+set showmatch  "Show matching bracets when text indicator is over them
+
+" tabbing:
+set expandtab
+set shiftwidth=2
+set softtabstop=2
+
+" folding:
+set nofoldenable            " don't fold when opening new buffers
+
+set undodir^=~/.vim/undo " For vim-sensible, keep all the undo files in the same place
+set backupdir=~/.vim/backup/
+set directory=~/.vim/backup/
+
+" Quit if only NERDTree is left
+map <C-n> :NERDTreeToggle<CR>
+map <leader>n :NERDTreeToggle<CR>
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+" Fix for funny characters
+"let g:NERDTreeDirArrows=0
+" Open automatically if no files specified:
+"autocmd vimenter * if !argc() | NERDTree | endif
+
+"" Syntastic
+"let g:syntastic_mode_map = { 'mode': 'active',
+"      \ 'active_filetypes': ['ruby', 'haskell'],
+"      \ 'passive_filetypes': ['scala', 'java', 'python'] }
+let g:syntastic_haskell_checkers = ['hdevtools']
+"let g:syntastic_ruby_checkers = ['rubocop']
+"let g:syntastic_scala_checkers = ['scalac']
+
+" GitGutter
+let g:gitgutter_enabled = 0
+
+" Airline
+"let g:airline_theme='luna'
+" let g:airline_powerline_fonts = 1
+
+" Snippets
+let g:UltiSnipsListSnippets="<F6>"
+
+" CtrlP
+let g:ctrlp_use_caching = 1
+
+" Custom command for :Ack
+" Make sure ack is on your path
+let g:ackprg="~/bin/ack -H --nocolor --nogroup --column"
+
+" Haskell
+let g:haskell_conceal_wide = 0
+au FileType haskell nnoremap <buffer> <F1> :HdevtoolsType<CR>
+au FileType haskell nnoremap <buffer> <silent> <F2> :HdevtoolsClear<CR>
+
+"function! s:find_basedir() "{{{
+"" search Cabal file
+"  if !exists('b:ghcmod_basedir')
+"    let l:ghcmod_basedir = expand('%:p:h')
+"    let l:dir = l:ghcmod_basedir
+"    for _ in range(6)
+"      if !empty(glob(l:dir . '/*.cabal', 0))
+"        let l:ghcmod_basedir = l:dir
+"        break
+"      endif
+"      let l:dir = fnamemodify(l:dir, ':h')
+"    endfor
+"    let b:ghcmod_basedir = l:ghcmod_basedir
+"  endif
+"  return b:ghcmod_basedir
+"endfunction "}}}
+"
+"" use ghc functionality for haskell files
+"let sandbox_dir = '/.cabal-sandbox/x86_64-osx-ghc-7.8.3-packages.conf.d'
+""let g:ghc="/usr/bin/ghc"
+"augroup filetype_hs
+"    autocmd!
+"    autocmd Bufenter *.hs let dir = s:find_basedir() . sandbox_dir
+"    "autocmd Bufenter *.hs compiler ghc
+"    autocmd Bufenter *.hs let b:ghc_staticoptions = '-package-db ' . dir
+"    autocmd Bufenter *.hs let g:ghcmod_ghc_options = ['-package-db ' . dir]
+"augroup END
