@@ -46,15 +46,26 @@ let g:UltiSnipsListSnippets="<F6>"
 
 " CtrlP
 let g:ctrlp_use_caching = 1
+let g:ctrlp_working_path_mode = 'a'
+let g:ctrlp_clear_cache_on_exit = 0
+unlet g:ctrlp_user_command
 
-" Custom command for :Ack
-" Make sure ack is on your path
+" Custom command for :Ack & :Ag
+" Make sure ack & ag is on your path
 let g:ackprg="~/bin/ack -H --nocolor --nogroup --column"
+let g:agprg="~/bin/ag --column"
 
 " Haskell
 let g:haskell_conceal_wide = 0
 au FileType haskell nnoremap <buffer> <F1> :HdevtoolsType<CR>
 au FileType haskell nnoremap <buffer> <silent> <F2> :HdevtoolsClear<CR>
+
+" Elm
+noremap <leader>jl :ElmEvalLine<CR>
+vnoremap <leader>js :<C-u>ElmEvalSelection<CR>
+nnoremap <leader>jp :ElmPrintTypes<CR>
+nnoremap <leader>jc :ElmMakeCurrentFile<CR>
+nnoremap <leader>jm :ElmMakeMain<CR>
 
 "function! s:find_basedir() "{{{
 "" search Cabal file
