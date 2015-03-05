@@ -31,6 +31,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 "      \ 'active_filetypes': ['ruby', 'haskell'],
 "      \ 'passive_filetypes': ['scala', 'java', 'python'] }
 let g:syntastic_haskell_checkers = ['hdevtools']
+let g:syntastic_ruby_exec = '~/bin/ruby'
 "let g:syntastic_ruby_checkers = ['rubocop']
 "let g:syntastic_scala_checkers = ['scalac']
 
