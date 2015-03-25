@@ -20,11 +20,3 @@ set fish_plugins git brew
 alias vim nvim
 alias vi nvim
 
-# Brazil
-alias bb brazil-build
-function bbc
-  brazil-build clean
-  brazil-build
-end
-alias bre brazil-runtime-exec
-
