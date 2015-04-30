@@ -1,0 +1,12 @@
+# Global gitignore file - see `man gitignore` for details
+/build
+/\.idea
+/\.settings
+/\.cache
+/\.classpath
+/\.project
+*.iml
+tags
+build
+.project
+.classpath
