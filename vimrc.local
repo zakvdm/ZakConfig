@@ -27,9 +27,9 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 "autocmd vimenter * if !argc() | NERDTree | endif
 
 "" Syntastic
-"let g:syntastic_mode_map = { 'mode': 'active',
-"      \ 'active_filetypes': ['ruby', 'haskell'],
-"      \ 'passive_filetypes': ['scala', 'java', 'python'] }
+let g:syntastic_mode_map = { 'mode': 'active',
+      \ 'active_filetypes': ['ruby', 'haskell'],
+      \ 'passive_filetypes': ['scala', 'java', 'python'] }
 let g:syntastic_haskell_checkers = ['hdevtools']
 let g:syntastic_ruby_exec = '~/bin/ruby'
 "let g:syntastic_ruby_checkers = ['rubocop']
