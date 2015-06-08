@@ -21,6 +21,10 @@ set directory=~/.vim/backup/
 map <C-n> :NERDTreeToggle<CR>
 map <leader>n :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
+nnoremap <Leader>w :w<CR>
+map q: :q
+
 " Fix for funny characters
 "let g:NERDTreeDirArrows=0
 " Open automatically if no files specified:
