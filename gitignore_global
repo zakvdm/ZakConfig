@@ -5,8 +5,16 @@
 /\.cache
 /\.classpath
 /\.project
+/\.cabal-sandbox
 *.iml
 tags
 build
+dist
 .project
 .classpath
+build
+*.sandbox.config
+.cabal-sandbox
+dist
+*.iml
+*DS_Store
