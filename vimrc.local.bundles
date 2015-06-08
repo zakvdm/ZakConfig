@@ -3,6 +3,7 @@ NeoBundle 'tpope/vim-sensible'
 NeoBundle 'flazz/vim-colorschemes'
 NeoBundle 'tpope/vim-unimpaired'
 NeoBundle 'tpope/vim-eunuch'
+NeoBundle 'christoomey/vim-tmux-navigator'
 
 " Coding
 NeoBundle 'mileszs/ack.vim'
@@ -18,4 +19,3 @@ NeoBundle 'groenewege/vim-less'
 NeoBundle 'vim-scripts/wikipedia.vim'
 NeoBundle 'bitc/vim-hdevtools'
 NeoBundle 'rking/ag.vim'
-
