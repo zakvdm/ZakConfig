@@ -1,0 +1,18 @@
+# top-most EditorConfig file (http://editorconfig.org/)
+root = true
+
+# Sensible defaults for most things
+[*]
+end_of_line = lf
+insert_final_newline = true
+charset = utf-8
+indent_style = space
+indent_size = 2
+
+# Language specific overrides
+[*.{java,xml}]
+indent_size = 4
+
+[Makefile]
+indent_style = tab
+indent_size = 2
