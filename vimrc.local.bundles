@@ -7,9 +7,9 @@ NeoBundle 'christoomey/vim-tmux-navigator'
 
 " Coding
 NeoBundle 'mileszs/ack.vim'
-NeoBundle 'Shougo/neocomplcache.vim'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'editorconfig/editorconfig-vim'
+NeoBundle 'ervandew/supertab'
 
 " Programming languages
 NeoBundle 'lambdatoast/elm.vim'
@@ -19,3 +19,11 @@ NeoBundle 'groenewege/vim-less'
 NeoBundle 'vim-scripts/wikipedia.vim'
 NeoBundle 'bitc/vim-hdevtools'
 NeoBundle 'rking/ag.vim'
+NeoBundle 'jceb/vim-orgmode'
+
+NeoBundle 'phildawes/racer', {
+\   'build' : {
+\     'mac': 'cargo build --release',
+\     'unix': 'cargo build --release',
+\   }
+\ }

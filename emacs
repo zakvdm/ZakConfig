@@ -55,7 +55,21 @@
                           'org
                           'helm
                           'helm-projectile
+                          'helm-ag
                           'company)
+
+;; org-mode
+; Highlight source blocks
+(setq org-src-fontify-natively t)
+
+;; Markdown
+(ensure-package-installed 'markdown-mode)
+
+(autoload 'markdown-mode "markdown-mode"
+  "Major mode for editing Markdown files" t)
+(add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 
 ;; Elm
 (ensure-package-installed 's
@@ -64,6 +78,12 @@
                           'elm-mode)
 
 (require 'elm-mode)
+
+;; Python
+(ensure-package-installed 'python-mode)
+
+;; Ruby
+(ensure-package-installed 'ruby-mode)
 
 ;; Rust
 (ensure-package-installed 'rust-mode
@@ -81,9 +101,16 @@
 
 (require 'rust-mode)
 
+;; Rails
+(ensure-package-installed 'haml-mode
+                          'coffee-mode)
+
+
 ;; COMPANY
 (add-hook 'after-init-hook 'global-company-mode)
-
+(add-hook 'global-company-mode-hook (lambda () (define-key company-active-map (kbd "C-p") 'company-select-next)))
+(add-hook 'global-company-mode-hook (lambda () (define-key company-active-map (kbd "C-n") 'company-select-previous)))
+        
 ;; EVIL MODE
 
 (require 'evil-leader)
@@ -104,6 +131,7 @@
 (evil-mode t)
 
 (define-key evil-insert-state-map (kbd "C-p") 'company-indent-or-complete-common)
+        
 
 ;; HELM CONFIG (stolen from https://github.com/thierryvolpiatto/emacs-tv-config/blob/master/init-helm-thierry.el)
 (require 'projectile)
@@ -131,10 +159,11 @@
 (global-set-key (kbd "M-x")                          'undefined)
 (global-set-key (kbd "M-x")                          'helm-M-x)
 
-;;Exit insert mode by pressing j and then k quickly
+;; Exit insert mode by pressing j and then k quickly
 (setq key-chord-two-keys-delay 0.5)
 (key-chord-define evil-insert-state-map "jk" 'evil-normal-state)
 (key-chord-mode 1)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

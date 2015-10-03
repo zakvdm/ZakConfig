@@ -20,3 +20,4 @@ set fish_plugins git brew
 alias vim nvim
 alias vi nvim
 
+set -x RUST_SRC_PATH /Users/zakv/tools/rust/rust-source/src

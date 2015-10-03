@@ -17,6 +17,7 @@ set undodir^=~/.vim/undo " For vim-sensible, keep all the undo files in the same
 set backupdir=~/.vim/backup/
 set directory=~/.vim/backup/
 
+set copyindent
 " Quit if only NERDTree is left
 map <C-n> :NERDTreeToggle<CR>
 map <leader>n :NERDTreeToggle<CR>
@@ -25,6 +26,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 nnoremap <Leader>w :w<CR>
 map q: :q
 
+inoremap jk <Esc>
 " Fix for funny characters
 "let g:NERDTreeDirArrows=0
 " Open automatically if no files specified:
@@ -53,12 +55,16 @@ let g:UltiSnipsListSnippets="<F6>"
 let g:ctrlp_use_caching = 1
 let g:ctrlp_working_path_mode = 'a'
 let g:ctrlp_clear_cache_on_exit = 0
+noremap <leader>e :CtrlP<CR>
+"let g:ctrlp_map = ',e'
 unlet g:ctrlp_user_command
+
+let g:SuperTabDefaultCompletionType = "context"
 
 " Custom command for :Ack & :Ag
 " Make sure ack & ag is on your path
 let g:ackprg="~/bin/ack -H --nocolor --nogroup --column"
-let g:agprg="~/bin/ag --column"
+let g:ag_prg="ag --vimgrep --smart-case"
 
 " Haskell
 let g:haskell_conceal_wide = 0
@@ -72,30 +78,5 @@ nnoremap <leader>jp :ElmPrintTypes<CR>
 nnoremap <leader>jc :ElmMakeCurrentFile<CR>
 nnoremap <leader>jm :ElmMakeMain<CR>
 
-"function! s:find_basedir() "{{{
-"" search Cabal file
-"  if !exists('b:ghcmod_basedir')
-"    let l:ghcmod_basedir = expand('%:p:h')
-"    let l:dir = l:ghcmod_basedir
-"    for _ in range(6)
-"      if !empty(glob(l:dir . '/*.cabal', 0))
-"        let l:ghcmod_basedir = l:dir
-"        break
-"      endif
-"      let l:dir = fnamemodify(l:dir, ':h')
-"    endfor
-"    let b:ghcmod_basedir = l:ghcmod_basedir
-"  endif
-"  return b:ghcmod_basedir
-"endfunction "}}}
-"
-"" use ghc functionality for haskell files
-"let sandbox_dir = '/.cabal-sandbox/x86_64-osx-ghc-7.8.3-packages.conf.d'
-""let g:ghc="/usr/bin/ghc"
-"augroup filetype_hs
-"    autocmd!
-"    autocmd Bufenter *.hs let dir = s:find_basedir() . sandbox_dir
-"    "autocmd Bufenter *.hs compiler ghc
-"    autocmd Bufenter *.hs let b:ghc_staticoptions = '-package-db ' . dir
-"    autocmd Bufenter *.hs let g:ghcmod_ghc_options = ['-package-db ' . dir]
-"augroup END
+let g:racer_cmd = "/Users/zakv/bin/racer"
+let $RUST_SRC_PATH="/Users/zakv/projects/rust/rustc-1.0.0/src/"
