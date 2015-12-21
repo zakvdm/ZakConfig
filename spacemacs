@@ -23,7 +23,11 @@ values."
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
-     auto-completion
+     (auto-completion :variables
+                      auto-completion-return-key-behavior 'complete
+                      auto-completion-tab-key-behavior 'cycle
+                      auto-completion-complete-with-key-sequence "jk"
+                      auto-completion-private-snippets-directory nil)
      better-defaults
      emacs-lisp
      git
@@ -36,6 +40,12 @@ values."
      syntax-checking
      version-control
      osx
+     (rust :variables
+           rust-enable-racer 't)
+     ruby
+     ruby-on-rails
+     javascript
+     html
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -79,10 +89,10 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(leuven
-                         monokai
-                         spacemacs-dark
+   dotspacemacs-themes '(spacemacs-dark
                          spacemacs-light
+                         leuven
+                         monokai
                          solarized-light
                          solarized-dark
                          darktooth
@@ -203,6 +213,10 @@ user code."
  This function is called at the very end of Spacemacs initialization after
 layers configuration. You are free to put any user code."
   (setq-default evil-escape-key-sequence "fd")
+  (setq-default evil-escape-delay 0.2)
+  (setq-default powerline-default-separator nil)
+  (setq-default compilation-scroll-output 'first-error)
+  (setq-default ruby-version-manager 'rbenv)
 )
 
 ;; Do not write anything past this comment. This is where Emacs will

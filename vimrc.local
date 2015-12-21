@@ -26,7 +26,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 nnoremap <Leader>w :w<CR>
 map q: :q
 
-inoremap jk <Esc>
+inoremap fd <ESC>
 " Fix for funny characters
 "let g:NERDTreeDirArrows=0
 " Open automatically if no files specified:
