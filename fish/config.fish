@@ -1,23 +1,20 @@
-# Path to your oh-my-fish.
-set fish_path $HOME/.oh-my-fish
+# Path to Oh My Fish install.
+set -gx OMF_PATH "/Users/zakv/.local/share/omf"
 
-# Theme
-#set fish_theme robbyrussell
-#set fish_theme cor
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-fish/plugins/*)
-# Custom plugins may be added to ~/.oh-my-fish/custom/plugins/
-# Example format: set fish_plugins autojump bundler
-set fish_plugins git brew
-
-# Path to your custom folder (default path is $FISH/custom)
-#set fish_custom $HOME/dotfiles/oh-my-fish
+# Customize Oh My Fish configuration path.
+#set -gx OMF_CONFIG "/Users/zakv/.config/omf"
 
 # Load oh-my-fish configuration.
-. $fish_path/oh-my-fish.fish
+source $OMF_PATH/init.fish
 
+alias f "cd ~/workspace/fig"
 
-alias vim nvim
-alias vi nvim
+# Fix for emacs
+function fish_title
+  true
+end
 
+set -x VISUAL ec
+set -x EDITOR ec
 set -x RUST_SRC_PATH /Users/zakv/tools/rust/rust-source/src
+
