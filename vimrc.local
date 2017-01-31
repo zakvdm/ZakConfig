@@ -77,6 +77,3 @@ vnoremap <leader>js :<C-u>ElmEvalSelection<CR>
 nnoremap <leader>jp :ElmPrintTypes<CR>
 nnoremap <leader>jc :ElmMakeCurrentFile<CR>
 nnoremap <leader>jm :ElmMakeMain<CR>
-
-let g:racer_cmd = "/Users/zakv/bin/racer"
-let $RUST_SRC_PATH="/Users/zakv/projects/rust/rustc-1.0.0/src/"
