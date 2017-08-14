@@ -65,12 +65,13 @@ values."
      shell-scripts
      elm
      scala
+     yaml
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '()
+   dotspacemacs-additional-packages '(vlf)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -198,7 +199,7 @@ values."
    ;; Size (in MB) above which spacemacs will prompt to open the large file
    ;; literally to avoid performance issues. Opening a file literally means that
    ;; no major mode or minor modes are active. (default is 1)
-   dotspacemacs-large-file-size 1
+   dotspacemacs-large-file-size 0.1
    ;; Location where to auto-save files. Possible values are `original' to
    ;; auto-save the file in-place, `cache' to auto-save the file to another
    ;; file stored in the cache directory and `nil' to disable auto-saving.
@@ -353,14 +354,6 @@ executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
-  ;; Fix up ANSI terminal colors in the compilation buffer
-  (ignore-errors
-    (require 'ansi-color)
-    (defun my-colorize-compilation-buffer ()
-      (when (eq major-mode 'compilation-mode)
-        (ansi-color-apply-on-region compilation-filter-start (point-max))))
-    (add-hook 'compilation-filter-hook 'my-colorize-compilation-buffer))
-
   )
 
 (defun dotspacemacs/user-config ()
@@ -375,6 +368,22 @@ you should place your code here."
   (setq-default powerline-default-separator nil)
   (setq-default compilation-scroll-output 'first-error)
   (setq-default ruby-version-manager 'rbenv)
+  ;; Disabling bidirectional text display reordering (whatever that is!) seems to improve performance on files with very long lines
+  (setq-default bidi-display-reordering nil)
+
+  ;; Fix up ANSI terminal colors in the compilation buffer
+  (ignore-errors
+    (require 'ansi-color)
+    (defun my-colorize-compilation-buffer ()
+      (when (eq major-mode 'compilation-mode)
+        (ansi-color-apply-on-region compilation-filter-start (point-max))))
+    (add-hook 'compilation-filter-hook 'my-colorize-compilation-buffer))
+
+  (with-eval-after-load 'projectile
+    (projectile-register-project-type 'brazil '("Config")
+                                      :compile "brazil-build release"
+                                      :test "brazil-build test"
+                                      ))
 )
 
 (defun dotspacemacs/emacs-custom-settings ()
@@ -392,7 +401,7 @@ This function is called at the very end of Spacemacs initialization."
  '(org-agenda-files (quote ("~/zzz/")))
  '(package-selected-packages
    (quote
-    (yasnippet xterm-color ws-butler winum which-key web-mode web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package unfill toml-mode toc-org tagedit symon string-inflection spaceline smeargle slim-mode shell-pop scss-mode sass-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe reveal-in-osx-finder restart-emacs rbenv rainbow-delimiters racer pug-mode projectile-rails popwin persp-mode pbcopy paradox pandoc-mode ox-pandoc osx-trash osx-dictionary orgit org-projectile org-present org-pomodoro org-download org-bullets open-junk-file noflet neotree mwim multi-term move-text mmm-mode minitest meghanada markdown-toc magit-gitflow macrostep lorem-ipsum livid-mode linum-relative link-hint less-css-mode launchctl json-mode js2-refactor js-doc insert-shebang info+ indent-guide hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-purpose helm-projectile helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag groovy-mode groovy-imports gradle-mode google-translate golden-ratio gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gh-md fuzzy flyspell-correct-helm flycheck-rust flycheck-pos-tip flycheck-elm flx-ido fish-mode fill-column-indicator feature-mode fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help ensime emmet-mode elm-mode elisp-slime-nav dumb-jump diff-hl csv-mode company-web company-tern company-statistics company-shell company-emacs-eclim column-enforce-mode coffee-mode clean-aindent-mode chruby cargo bundler browse-at-remote auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell)))
+    (vlf yaml-mode xterm-color ws-butler winum which-key web-mode web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package unfill toml-mode toc-org tagedit symon string-inflection spaceline smeargle slim-mode shell-pop scss-mode sass-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe reveal-in-osx-finder restart-emacs rbenv rainbow-delimiters racer pug-mode projectile-rails popwin persp-mode pbcopy paradox pandoc-mode ox-pandoc osx-trash osx-dictionary orgit org-projectile org-present org-pomodoro org-download org-bullets open-junk-file noflet neotree mwim multi-term move-text mmm-mode minitest meghanada markdown-toc magit-gitflow macrostep lorem-ipsum livid-mode linum-relative link-hint less-css-mode launchctl json-mode js2-refactor js-doc insert-shebang info+ indent-guide hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-purpose helm-projectile helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag groovy-mode groovy-imports gradle-mode google-translate golden-ratio gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gh-md fuzzy flyspell-correct-helm flycheck-rust flycheck-pos-tip flycheck-elm flx-ido fish-mode fill-column-indicator feature-mode fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help ensime emmet-mode elm-mode elisp-slime-nav dumb-jump diff-hl csv-mode company-web company-tern company-statistics company-shell company-emacs-eclim column-enforce-mode coffee-mode clean-aindent-mode chruby cargo bundler browse-at-remote auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell)))
  '(projectile-use-git-grep t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

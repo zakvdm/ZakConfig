@@ -13,6 +13,8 @@ source $OMF_PATH/init.fish
 
 alias f "cd ~/workspace/fig"
 
+alias ls exa
+
 # Fix for emacs
 function fish_title
   true
